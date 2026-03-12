@@ -102,7 +102,7 @@
         rgba(26,37,53,0.1) 40%,
         rgba(26,37,53,0.75) 100%
       ),
-      url('./assets/building-day.jpeg') center/cover no-repeat;
+      url('./assets/hero.jpeg') center/cover no-repeat;
     }
 
     .hero-content {
@@ -599,18 +599,81 @@
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .stats-bar { grid-template-columns: repeat(2, 1fr); }
-      .about { grid-template-columns: 1fr; gap: 48px; }
+      .about { grid-template-columns: 1fr; gap: 48px; padding: 60px 5%; }
       .about-visual { order: -1; }
+      .about-badge { bottom: -10px; left: -10px; }
       .location-grid { grid-template-columns: 1fr; }
       .contact-form { grid-template-columns: 1fr; }
       .form-group.full { grid-column: 1; }
       .form-submit { grid-column: 1; }
+      .capital-table { font-size: 0.8rem; }
+      .capital-table th, .capital-table td { padding: 12px 10px; }
+      .units { padding: 60px 5%; }
+      .location { padding: 60px 5%; }
+      .process { padding: 60px 5%; }
+      .contact { padding: 60px 5%; }
     }
+
     @media (max-width: 600px) {
+      /* Core layout fix — stops white space on right */
+      html, body { overflow-x: hidden; max-width: 100%; }
+      section, div, nav, footer { max-width: 100%; }
+
       .stats-bar { grid-template-columns: 1fr 1fr; }
-      .stat-item { padding: 16px; }
-      .hero h1 { font-size: 2.8rem; }
+      .stat-item { padding: 16px 10px; }
+      .stat-number { font-size: 1.6rem; }
+
+      /* Hero */
+      .hero { min-height: 100svh; }
+      .hero-content { padding: 0 5% 60px; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero-sub { font-size: 0.9rem; }
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-outline { width: 100%; text-align: center; }
+      .hero-scroll { display: none; }
+
+      /* About */
+      .about { padding: 48px 5%; }
+      .about-img-main { box-shadow: 12px 12px 0 var(--gold-light); }
+
+      /* Location */
       .location-perks { grid-template-columns: 1fr; }
+      .location-map { aspect-ratio: 1/1; }
+
+      /* Units */
+      .unit-tabs { gap: 0; }
+      .unit-tab { padding: 10px 14px; font-size: 0.72rem; }
+      .units-grid { grid-template-columns: 1fr !important; }
+
+      /* Investment table — make it scrollable */
+      .capital { padding: 60px 5%; }
+      .capital-inner { overflow-x: auto; }
+      .capital-table { min-width: 480px; font-size: 0.78rem; }
+      .capital-table th, .capital-table td { padding: 10px 8px; }
+
+      /* Process */
+      .process-steps::before { left: 22px; }
+      .step-num { width: 44px; height: 44px; font-size: 1.1rem; flex-shrink: 0; }
+
+      /* Requirements */
+      .requirements { padding: 48px 5%; }
+      .req-cards { flex-direction: column; align-items: center; }
+      .req-card { width: 100%; max-width: 320px; }
+
+      /* Contact */
+      .contact-alt { flex-direction: column; gap: 20px; }
+
+      /* Footer */
+      footer { flex-direction: column; text-align: center; }
+
+      /* Nav */
+      nav { padding: 16px 5%; }
+    }
+
+    @media (max-width: 400px) {
+      .hero h1 { font-size: 2rem; }
+      .stat-number { font-size: 1.3rem; }
+      .unit-tab { padding: 8px 10px; font-size: 0.65rem; }
     }
 
     /* ── ANIMATIONS ── */
@@ -1171,22 +1234,23 @@
       Fill in the form below and our dedicated team will get back to you within 24 hours 
       to discuss your investment, arrange a site visit, or answer any questions.
     </p>
-    <form class="contact-form fade-up" onsubmit="handleSubmit(event)">
+    <form class="contact-form fade-up" action="https://formspree.io/f/xyknjkbk" method="POST" id="contactForm">
+      <input type="hidden" name="_subject" value="New Enquiry — Prestigious Residence" />
       <div class="form-group">
         <label>Full Name</label>
-        <input type="text" placeholder="Your full name" required />
+        <input type="text" name="name" placeholder="Your full name" required />
       </div>
       <div class="form-group">
         <label>Phone Number</label>
-        <input type="tel" placeholder="+254 7XX XXX XXX" required />
+        <input type="tel" name="phone" placeholder="+254 7XX XXX XXX" required />
       </div>
       <div class="form-group">
         <label>Email Address</label>
-        <input type="email" placeholder="your@email.com" />
+        <input type="email" name="email" placeholder="your@email.com" />
       </div>
       <div class="form-group">
         <label>Unit of Interest</label>
-        <select>
+        <select name="unit">
           <option value="">Select a unit type</option>
           <option>Studio — from KES 1.75M</option>
           <option>1 Bedroom Standard — KES 3.5M</option>
@@ -1200,10 +1264,10 @@
       </div>
       <div class="form-group full">
         <label>Message (Optional)</label>
-        <textarea placeholder="Tell us more about your needs or questions..."></textarea>
+        <textarea name="message" placeholder="Tell us more about your needs or questions..."></textarea>
       </div>
       <div class="form-submit">
-        <button type="submit">Send Enquiry</button>
+        <button type="submit" id="submitBtn">Send Enquiry</button>
       </div>
     </form>
     <div class="contact-alt fade-up">
@@ -1260,19 +1324,47 @@
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // Form submission
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.textContent = '✓ Enquiry Sent! We\'ll be in touch soon.';
-    btn.style.background = '#4ade80';
-    btn.style.color = '#0d2818';
-    setTimeout(() => {
-      btn.textContent = 'Send Enquiry';
-      btn.style.background = '';
-      btn.style.color = '';
-      e.target.reset();
-    }, 4000);
+  // Form submission via Formspree AJAX
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.7';
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          submitBtn.textContent = '✓ Enquiry Sent! We\'ll be in touch within 24 hours.';
+          submitBtn.style.background = '#4ade80';
+          submitBtn.style.color = '#0d2818';
+          submitBtn.style.opacity = '1';
+          form.reset();
+          setTimeout(() => {
+            submitBtn.textContent = 'Send Enquiry';
+            submitBtn.style.background = '';
+            submitBtn.style.color = '';
+            submitBtn.disabled = false;
+          }, 5000);
+        } else {
+          throw new Error('Form error');
+        }
+      } catch {
+        submitBtn.textContent = 'Error — please try again';
+        submitBtn.style.background = '#ef4444';
+        submitBtn.style.opacity = '1';
+        submitBtn.disabled = false;
+        setTimeout(() => {
+          submitBtn.textContent = 'Send Enquiry';
+          submitBtn.style.background = '';
+        }, 3000);
+      }
+    });
   }
 
   // Sticky nav shadow on scroll
