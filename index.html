@@ -3,20 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prestigious Residence | Safari Park, Nairobi</title>
-  <meta name="description" content="Luxury apartments along 1st Avenue Safari Park, Nairobi. Studios to 4 Bedrooms from KES 1.75M. Flexible 24-month payment plans. Own your piece of Nairobi's skyline." />
+  <title>Apartments for Sale in Safari Park, Nairobi | Prestigious Residence</title>
+  <meta name="description" content="Buy a studio, 1, 2, 3 or 4 bedroom apartment at Prestigious Residence, 1st Avenue Safari Park, Nairobi. From KES 1.75M with a 20% deposit and flexible 24-month payment plan." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="theme-color" content="#1a2535" />
   <meta property="og:title" content="Prestigious Residence | Safari Park, Nairobi" />
   <meta property="og:description" content="Modern luxury apartments from KES 1.75M. Studios to 4BR. 20% deposit, 24-month flexible payment plan. Off Thika Road, opposite Garden City Mall." />
-  <meta property="og:image" content="./assets/hero.jpeg" />
-  <meta property="og:url" content="https://prestigious-residence-website.vercel.app/" />
+  <meta property="og:image" content="https://www.prestigiousresidence.co.ke/assets/hero.jpeg" />
+  <meta property="og:image:alt" content="Prestigious Residence apartment development in Safari Park, Nairobi" />
+  <meta property="og:url" content="https://www.prestigiousresidence.co.ke/" />
   <meta property="og:type" content="website" />
   <meta property="og:image:width" content="1600" />
   <meta property="og:image:height" content="949" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Prestigious Residence | Safari Park, Nairobi" />
   <meta name="twitter:description" content="Modern luxury apartments from KES 1.75M. Studios to 4BR. 20% deposit, 24-month flexible payment plan. Off Thika Road, opposite Garden City Mall." />
-  <meta name="twitter:image" content="https://prestigious-residence-website.vercel.app/assets/hero.jpeg" />
-  <link rel="canonical" href="https://prestigious-residence-website.vercel.app/" />
+  <meta name="twitter:image" content="https://www.prestigiousresidence.co.ke/assets/hero.jpeg" />
+  <link rel="canonical" href="https://www.prestigiousresidence.co.ke/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ApartmentComplex",
+    "@id": "https://www.prestigiousresidence.co.ke/#residence",
+    "name": "Prestigious Residence",
+    "url": "https://www.prestigiousresidence.co.ke/",
+    "image": "https://www.prestigiousresidence.co.ke/assets/hero.jpeg",
+    "description": "Studios and one to four bedroom apartments for sale on 1st Avenue Safari Park, Nairobi, opposite Garden City Mall.",
+    "telephone": "+254748889503",
+    "email": "info@prestigiousresidence.co.ke",
+    "address": {"@type":"PostalAddress","streetAddress":"1st Avenue, Safari Park","addressLocality":"Nairobi","addressCountry":"KE"},
+    "geo": {"@type":"GeoCoordinates","latitude":-1.2297,"longitude":36.8784},
+    "priceRange": "KES 1,750,000 - KES 16,500,000"
+  }
+  </script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' fill='%231a2535'/><path d='M20 4 L34 14 L34 26 L20 36 L6 26 L6 14 Z' stroke='%23c9a96e' stroke-width='1.5' fill='none'/><path d='M14 20 Q20 12 26 20 Q20 28 14 20Z' fill='%23c9a96e' opacity='0.8'/></svg>" />
 
   <!-- META PIXEL — Replace YOUR_PIXEL_ID and uncomment to activate
@@ -118,7 +137,10 @@
     }
     .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
 
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      appearance: none; border: 0; padding: 8px; background: transparent;
+    }
     .hamburger span { width: 24px; height: 2px; background: white; transition: 0.3s; }
 
     /* ── HERO ── */
@@ -610,6 +632,17 @@
       cursor: pointer; transition: background 0.2s;
     }
     .form-submit button:hover { background: var(--gold-light); }
+    .form-trust {
+      grid-column: 1 / -1; display: flex; gap: 20px; flex-wrap: wrap;
+      color: rgba(255,255,255,0.62); font-size: 0.78rem; line-height: 1.5;
+    }
+    .form-trust span { display: inline-flex; align-items: center; gap: 7px; }
+    .form-status {
+      grid-column: 1 / -1; display: none; padding: 16px 18px;
+      border: 1px solid rgba(201,169,110,.35); background: rgba(201,169,110,.08);
+      color: white; line-height: 1.55;
+    }
+    .form-status.visible { display: block; }
     .contact-alt {
       margin-top: 48px; padding-top: 48px;
       border-top: 1px solid var(--border);
@@ -893,9 +926,9 @@
     <li><a href="#invest">Investment</a></li>
     <li><a href="#contact" class="nav-cta">Enquire Now</a></li>
   </ul>
-  <div class="hamburger" onclick="toggleMenu()">
+  <button class="hamburger" type="button" onclick="toggleMenu()" aria-label="Open navigation" aria-controls="mobileNav" aria-expanded="false">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
 <!-- MOBILE NAV -->
@@ -1503,8 +1536,8 @@
       <div class="section-line"></div>
     </div>
     <p class="contact-desc fade-up">
-      Fill in the form below and our dedicated team will get back to you within 24 hours 
-      to discuss your investment, arrange a site visit, or answer any questions.
+      Tell us what you are looking for. A property advisor will respond with matching availability,
+      the payment plan and the clearest next step for your purchase or investment.
     </p>
     <div class="contact-quick-cta fade-up">
       <a class="quick-cta-card" href="https://wa.me/254748889503?text=Hi!%20I'd%20like%20to%20book%20a%20site%20visit%20at%20Prestigious%20Residence.%20Please%20confirm%20a%20convenient%20time." target="_blank" rel="noopener">
@@ -1526,6 +1559,11 @@
     </div>
     <form class="contact-form fade-up" action="https://formspree.io/f/xyknjkbk" method="POST" id="contactForm">
       <input type="hidden" name="_subject" value="New Enquiry — Prestigious Residence" />
+      <input type="hidden" name="source_url" id="sourceUrl" />
+      <input type="hidden" name="utm_source" id="utmSource" />
+      <input type="hidden" name="utm_medium" id="utmMedium" />
+      <input type="hidden" name="utm_campaign" id="utmCampaign" />
+      <input type="hidden" name="utm_content" id="utmContent" />
       <div class="form-group">
         <label>Full Name</label>
         <input type="text" name="name" placeholder="Your full name" required />
@@ -1540,7 +1578,7 @@
       </div>
       <div class="form-group">
         <label>Unit of Interest</label>
-        <select name="unit">
+        <select name="unit" required>
           <option value="">Select a unit type</option>
           <option>Studio — from KES 1.75M</option>
           <option>1 Bedroom Standard — KES 3.5M</option>
@@ -1552,13 +1590,46 @@
           <option>4 Bedroom — KES 16.5M</option>
         </select>
       </div>
+      <div class="form-group">
+        <label>Buying Purpose</label>
+        <select name="buying_purpose" required>
+          <option value="">Select your goal</option>
+          <option value="home">A home to live in</option>
+          <option value="investment">Rental investment</option>
+          <option value="both">Considering both</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Purchase Timeline</label>
+        <select name="purchase_timeline" required>
+          <option value="">When would you like to buy?</option>
+          <option value="0-30-days">Within 30 days</option>
+          <option value="1-3-months">Within 1–3 months</option>
+          <option value="3-6-months">Within 3–6 months</option>
+          <option value="researching">Just researching</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Preferred Next Step</label>
+        <select name="preferred_next_step" required>
+          <option value="">How should we help?</option>
+          <option value="site-visit">Book a site visit</option>
+          <option value="brochure">Send brochure &amp; price list</option>
+          <option value="call">Call me</option>
+          <option value="whatsapp">WhatsApp me</option>
+        </select>
+      </div>
       <div class="form-group full">
         <label>Message (Optional)</label>
         <textarea name="message" placeholder="Tell us more about your needs or questions..."></textarea>
       </div>
       <div class="form-submit">
-        <button type="submit" id="submitBtn">Send Enquiry</button>
+        <button type="submit" id="submitBtn">Get Availability &amp; Payment Plan</button>
       </div>
+      <div class="form-trust" aria-label="Enquiry commitments">
+        <span>✓ No obligation</span><span>✓ Your details stay private</span><span>✓ Direct response from the property team</span>
+      </div>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
     </form>
     <div class="contact-alt fade-up">
       <div class="contact-method">
@@ -1602,6 +1673,8 @@
   // Mobile menu
   function toggleMenu() {
     document.getElementById('mobileNav').classList.toggle('open');
+    const trigger = document.querySelector('.hamburger');
+    if (trigger) trigger.setAttribute('aria-expanded', document.getElementById('mobileNav').classList.contains('open'));
   }
 
   // Scroll animations
@@ -1618,6 +1691,24 @@
   // Form submission via Formspree AJAX
   const form = document.getElementById('contactForm');
   const submitBtn = document.getElementById('submitBtn');
+  const formStatus = document.getElementById('formStatus');
+  const params = new URLSearchParams(window.location.search);
+  document.getElementById('sourceUrl').value = window.location.href;
+  ['Source', 'Medium', 'Campaign', 'Content'].forEach(function(key) {
+    const field = document.getElementById('utm' + key);
+    if (field) field.value = params.get('utm_' + key.toLowerCase()) || '';
+  });
+
+  function trackLeadEvent(name, data) {
+    if (typeof window.gtag === 'function') window.gtag('event', name, data || {});
+    if (typeof window.fbq === 'function') window.fbq('trackCustom', name, data || {});
+  }
+
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      trackLeadEvent('whatsapp_enquiry', { link_text: link.textContent.trim(), destination: link.href });
+    });
+  });
   if (form) {
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -1631,13 +1722,16 @@
           headers: { 'Accept': 'application/json' }
         });
         if (response.ok) {
-          submitBtn.textContent = '✓ Enquiry Sent! We\'ll be in touch within 24 hours.';
+          submitBtn.textContent = '✓ Enquiry received';
           submitBtn.style.background = '#4ade80';
           submitBtn.style.color = '#0d2818';
           submitBtn.style.opacity = '1';
           form.reset();
+          formStatus.textContent = 'Thank you. Your enquiry has been recorded and a property advisor will contact you with availability, pricing and your requested next step.';
+          formStatus.classList.add('visible');
+          trackLeadEvent('generate_lead', { form_name: 'property_enquiry' });
           setTimeout(() => {
-            submitBtn.textContent = 'Send Enquiry';
+            submitBtn.textContent = 'Get Availability & Payment Plan';
             submitBtn.style.background = '';
             submitBtn.style.color = '';
             submitBtn.disabled = false;
@@ -1646,12 +1740,12 @@
           throw new Error('Form error');
         }
       } catch {
-        submitBtn.textContent = 'Error — please try again';
+        submitBtn.textContent = 'Could not send — WhatsApp us instead';
         submitBtn.style.background = '#ef4444';
         submitBtn.style.opacity = '1';
         submitBtn.disabled = false;
         setTimeout(() => {
-          submitBtn.textContent = 'Send Enquiry';
+          submitBtn.textContent = 'Get Availability & Payment Plan';
           submitBtn.style.background = '';
         }, 3000);
       }
