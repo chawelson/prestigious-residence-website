@@ -32,8 +32,7 @@
     "telephone": "+254748889503",
     "email": "info@prestigiousresidence.co.ke",
     "address": {"@type":"PostalAddress","streetAddress":"1st Avenue, Safari Park","addressLocality":"Nairobi","addressCountry":"KE"},
-    "geo": {"@type":"GeoCoordinates","latitude":-1.2297,"longitude":36.8784},
-    "priceRange": "KES 1,750,000 - KES 16,500,000"
+    "hasMap": "https://maps.app.goo.gl/Sd9cjX75icJV3e4y9"
   }
   </script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' fill='%231a2535'/><path d='M20 4 L34 14 L34 26 L20 36 L6 26 L6 14 Z' stroke='%23c9a96e' stroke-width='1.5' fill='none'/><path d='M14 20 Q20 12 26 20 Q20 28 14 20Z' fill='%23c9a96e' opacity='0.8'/></svg>" />
@@ -904,12 +903,16 @@
       .faq-answer, .faq-icon, .quick-cta-card { transition: none; }
     }
   </style>
+  <link rel="stylesheet" href="/assets/refinements.css" />
+  <link rel="preload" as="image" href="/assets/building-day.jpeg" />
+  <script src="/assets/site.js" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="#top" aria-label="Prestigious Residence home">
     <svg class="nav-logo-icon" viewBox="0 0 40 40" fill="none">
       <path d="M20 4 L34 14 L34 26 L20 36 L6 26 L6 14 Z" stroke="#c9a96e" stroke-width="1.5" fill="none"/>
       <path d="M14 20 Q20 12 26 20 Q20 28 14 20Z" fill="#c9a96e" opacity="0.6"/>
@@ -918,47 +921,50 @@
       <span class="nav-logo-text">Prestigious</span>
       <span class="nav-logo-sub">Residence</span>
     </div>
-  </div>
+  </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#location">Location</a></li>
     <li><a href="#units">Units</a></li>
-    <li><a href="#invest">Investment</a></li>
+    <li><a href="#invest">Payment plan</a></li>
     <li><a href="#contact" class="nav-cta">Enquire Now</a></li>
   </ul>
-  <button class="hamburger" type="button" onclick="toggleMenu()" aria-label="Open navigation" aria-controls="mobileNav" aria-expanded="false">
+  <button class="hamburger" type="button" aria-label="Open navigation" aria-controls="mobileNav" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE NAV -->
-<div class="mobile-nav" id="mobileNav">
-  <button class="mobile-close" onclick="toggleMenu()">✕</button>
-  <a href="#about" onclick="toggleMenu()">About</a>
-  <a href="#location" onclick="toggleMenu()">Location</a>
-  <a href="#units" onclick="toggleMenu()">Units & Pricing</a>
-  <a href="#invest" onclick="toggleMenu()">Investment</a>
-  <a href="#contact" onclick="toggleMenu()">Enquire Now</a>
-</div>
+<dialog class="mobile-nav" id="mobileNav" aria-label="Main navigation">
+  <button class="mobile-close" type="button" aria-label="Close navigation">✕</button>
+  <a href="#about">About</a>
+  <a href="#location">Location</a>
+  <a href="#units">Units & Pricing</a>
+  <a href="#invest">Payment plan</a>
+  <a href="#contact">Enquire Now</a>
+</dialog>
+<noscript><p class="noscript-nav"><a href="#units">Units &amp; prices</a> · <a href="#contact">Enquire</a></p></noscript>
+<main id="main" tabindex="-1">
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-bg"></div>
   <div class="hero-content">
     <div class="hero-badge">
       <div class="hero-badge-dot"></div>
-      <span>Now Selling · 15th Floor & Rising</span>
+      <span>Safari Park, Nairobi · Now selling</span>
     </div>
-    <h1>Where Nairobi's<br>skyline meets <em>your</em><br>ambition.</h1>
+    <h1>Where Nairobi’s skyline meets <em>your ambition.</em></h1>
     <p class="hero-sub">
       Luxury residences along 1st Avenue Safari Park — opposite Garden City Mall.
       Studios to 4 Bedrooms from KES 1.75M, with flexible 24-month payment plans.
     </p>
     <div class="hero-actions">
       <a href="#units" class="btn-primary">Explore Units</a>
-      <a href="#contact" class="btn-outline">Book a Site Visit</a>
+      <a href="#contact" class="btn-outline" data-next-step="site-visit">Request a Site Visit</a>
     </div>
   </div>
+  <p class="hero-image-note">Architectural illustration</p>
   <div class="hero-scroll">
     <div class="scroll-line"></div>
     <span>Scroll</span>
@@ -973,17 +979,19 @@
   </div>
   <div class="stat-item">
     <div class="stat-number">20%</div>
-    <div class="stat-label">Deposit to Own</div>
+    <div class="stat-label">Listed deposit</div>
   </div>
   <div class="stat-item">
     <div class="stat-number">Oct '26</div>
-    <div class="stat-label">Completion Date</div>
+    <div class="stat-label">Target completion*</div>
   </div>
   <div class="stat-item">
-    <div class="stat-number">15F+</div>
-    <div class="stat-label">Under Construction</div>
+    <div class="stat-number">24 months</div>
+    <div class="stat-label">Listed payment plan</div>
   </div>
 </div>
+
+<p class="listing-note">*October 2026 is the advertised target. Confirm the current construction schedule, prices and availability with the sales team.</p>
 
 <!-- ABOUT -->
 <section class="about" id="about">
@@ -1001,20 +1009,20 @@
     </p>
     <p class="about-desc">
       With Studios, 1, 2, 3, and 4 Bedroom units available, this development offers 
-      multiple wealth creation possibilities — whether you're buying to live or investing 
-      for capital appreciation.
+      a choice of layouts for a first home, a growing household or a rental investment. Compare the floor plans and request current availability before deciding.
     </p>
     <div class="about-highlight">
-      "Intelligent investors make intelligent decisions. Here is one."
+      Find the space that fits your plans. Start with a floor plan, then see the development for yourself.
     </div>
   </div>
-  <div class="about-visual fade-up">
-    <img src="./assets/building-day.jpeg" alt="Prestigious Residence exterior" class="about-img-main" />
+  <figure class="about-visual fade-up">
+    <img src="./assets/building-day.jpeg" alt="Architectural illustration of the Prestigious Residence exterior" class="about-img-main" loading="lazy" decoding="async" />
     <div class="about-badge">
-      <div class="about-badge-num">2026</div>
-      <div class="about-badge-text">Ready Oct</div>
+      <div class="about-badge-num">Off-plan</div>
+      <div class="about-badge-text">View the development</div>
     </div>
-  </div>
+    <figcaption>Architectural illustration, not a construction update. Ask for dated site photographs or arrange a visit.</figcaption>
+  </figure>
 </section>
 
 <!-- LOCATION -->
@@ -1029,7 +1037,7 @@
       <div class="location-map fade-up">
         <iframe
           src="https://maps.google.com/maps?q=-1.2297,36.8784&z=15&output=embed"
-          allowfullscreen loading="lazy"
+          title="Map of the Safari Park area near Prestigious Residence" allowfullscreen loading="lazy"
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
@@ -1058,7 +1066,7 @@
           <div class="location-address" style="grid-column:1/-1">
             <span style="font-size:1.2rem">📍</span>
             <p>1st Avenue Safari Park, off Thika Rd, Nairobi &nbsp;|&nbsp;
-              <a href="https://maps.app.goo.gl/Sd9cjX75icJV3e4y9" target="_blank">Open in Google Maps →</a>
+              <a href="https://maps.app.goo.gl/Sd9cjX75icJV3e4y9" target="_blank" rel="noopener">Open in Google Maps →</a>
             </p>
           </div>
         </div>
@@ -1088,7 +1096,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
         </svg>
         <div class="benefit-title">Mountain Mall</div>
-        <div class="benefit-desc">Everyday shopping &amp; services right behind the development.</div>
+        <div class="benefit-desc">Everyday shopping &amp; services nearby. The development is behind Mountain Mall.</div>
       </div>
       <div class="benefit-card">
         <svg class="benefit-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -1115,8 +1123,8 @@
         <svg class="benefit-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
         </svg>
-        <div class="benefit-title">Strong Rental Demand</div>
-        <div class="benefit-desc">High-yield buy-to-let corridor — consistently strong rental returns.</div>
+        <div class="benefit-title">Considering a Rental?</div>
+        <div class="benefit-desc">Compare local rents, service charges and vacancy costs before making your decision.</div>
       </div>
     </div>
   </div>
@@ -1131,12 +1139,13 @@
       <div class="section-line"></div>
     </div>
 
-    <div class="unit-tabs">
-      <button class="unit-tab active" onclick="switchTab(this,'tab-studios')">Studios</button>
-      <button class="unit-tab" onclick="switchTab(this,'tab-1br')">1 Bedroom</button>
-      <button class="unit-tab" onclick="switchTab(this,'tab-2br')">2 Bedroom</button>
-      <button class="unit-tab" onclick="switchTab(this,'tab-3br')">3 Bedroom</button>
-      <button class="unit-tab" onclick="switchTab(this,'tab-4br')">4 Bedroom</button>
+    <p class="section-intro">Compare layouts and listed prices. Select a home to carry it into your enquiry, or open the full floor plan for a closer look.</p>
+    <div class="unit-tabs" hidden aria-label="Apartment categories">
+      <button class="unit-tab active" type="button" id="unit-tab-studios" data-panel="tab-studios">Studios</button>
+      <button class="unit-tab" type="button" id="unit-tab-1br" data-panel="tab-1br">1 Bedroom</button>
+      <button class="unit-tab" type="button" id="unit-tab-2br" data-panel="tab-2br">2 Bedroom</button>
+      <button class="unit-tab" type="button" id="unit-tab-3br" data-panel="tab-3br">3 Bedroom</button>
+      <button class="unit-tab" type="button" id="unit-tab-4br" data-panel="tab-4br">4 Bedroom</button>
     </div>
 
     <div class="unit-panels">
@@ -1145,56 +1154,68 @@
       <div id="tab-studios" class="units-grid active">
         <div class="unit-card">
           <div class="unit-card-img">
-            <img src="./assets/studio1_75M.jpeg" alt="Studio Type A" />
+            <a href="./assets/studio1_75M.jpeg" target="_blank" rel="noopener" class="floorplan-link" aria-label="View full floor plan: Studio — KES 1.75M (15 m²) (opens in a new tab)">
+              <img src="./assets/studio1_75M.jpeg" alt="Studio — KES 1.75M (15 m²) — illustrative floor plan" loading="lazy" decoding="async" />
+              <span class="floorplan-hint">View full floor plan <span aria-hidden="true">↗</span></span>
+            </a>
           </div>
           <div class="unit-card-body">
-            <div class="unit-card-type">Studio · Type A</div>
+            <div class="unit-card-type">Studio · 15 m²</div>
             <div class="unit-card-name">Studio Apartment</div>
             <div class="unit-card-size">15 m² · Compact & Efficient</div>
             <div class="unit-card-price">KES 1.75M <span>/ unit</span></div>
             <div class="unit-card-plan">
               <div class="plan-item"><div class="plan-label">Deposit</div><div class="plan-value">KES 350K</div></div>
-              <div class="plan-item"><div class="plan-label">Monthly</div><div class="plan-value">KES 58K</div></div>
-              <div class="plan-item"><div class="plan-label">Plan</div><div class="plan-value">24 Months</div></div>
-              <div class="plan-item"><div class="plan-label">Capital Value</div><div class="plan-value">KES 2.1M</div></div>
+              <div class="plan-item"><div class="plan-label">Approx. / month</div><div class="plan-value">KES 58,333</div></div>
+
+
             </div>
-            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%20Studio%20Type%20A%20(KES%201.75M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">WhatsApp Enquiry →</a>
+            <a href="#contact" class="unit-enquire" data-unit="Studio — KES 1.75M (15 m²)">Enquire about this home <span aria-hidden="true">→</span></a>
+            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%2015%20m%C2%B2%20Studio%20(KES%201.75M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">Ask on WhatsApp</a>
           </div>
         </div>
         <div class="unit-card">
           <div class="unit-card-img">
-            <img src="./assets/studio2_1M.jpeg" alt="Studio Type B" />
+            <a href="./assets/studio2_1M.jpeg" target="_blank" rel="noopener" class="floorplan-link" aria-label="View full floor plan: Studio — KES 2.1M (21 m²) (opens in a new tab)">
+              <img src="./assets/studio2_1M.jpeg" alt="Studio — KES 2.1M (21 m²) — illustrative floor plan" loading="lazy" decoding="async" />
+              <span class="floorplan-hint">View full floor plan <span aria-hidden="true">↗</span></span>
+            </a>
           </div>
           <div class="unit-card-body">
-            <div class="unit-card-type">Studio · Type B</div>
+            <div class="unit-card-type">Studio · 21 m²</div>
             <div class="unit-card-name">Studio Apartment</div>
             <div class="unit-card-size">21 m² · Spacious Studio</div>
             <div class="unit-card-price">KES 2.1M <span>/ unit</span></div>
             <div class="unit-card-plan">
               <div class="plan-item"><div class="plan-label">Deposit</div><div class="plan-value">KES 420K</div></div>
-              <div class="plan-item"><div class="plan-label">Monthly</div><div class="plan-value">KES 70K</div></div>
-              <div class="plan-item"><div class="plan-label">Plan</div><div class="plan-value">24 Months</div></div>
-              <div class="plan-item"><div class="plan-label">Capital Value</div><div class="plan-value">KES 2.52M</div></div>
+              <div class="plan-item"><div class="plan-label">Approx. / month</div><div class="plan-value">KES 70,000</div></div>
+
+
             </div>
-            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%20Studio%20Type%20B%20(KES%202.1M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">WhatsApp Enquiry →</a>
+            <a href="#contact" class="unit-enquire" data-unit="Studio — KES 2.1M (21 m²)">Enquire about this home <span aria-hidden="true">→</span></a>
+            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%2021%20m%C2%B2%20Studio%20(KES%202.1M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">Ask on WhatsApp</a>
           </div>
         </div>
         <div class="unit-card">
           <div class="unit-card-img">
-            <img src="./assets/studio2_5.jpeg" alt="Studio Type C" />
+            <a href="./assets/studio2_5.jpeg" target="_blank" rel="noopener" class="floorplan-link" aria-label="View full floor plan: Studio — KES 2.5M (25 m²) (opens in a new tab)">
+              <img src="./assets/studio2_5.jpeg" alt="Studio — KES 2.5M (25 m²) — illustrative floor plan" loading="lazy" decoding="async" />
+              <span class="floorplan-hint">View full floor plan <span aria-hidden="true">↗</span></span>
+            </a>
           </div>
           <div class="unit-card-body">
-            <div class="unit-card-type">Studio · Type C</div>
+            <div class="unit-card-type">Studio · 25 m²</div>
             <div class="unit-card-name">Studio Apartment</div>
             <div class="unit-card-size">25 m² · Premium Studio</div>
             <div class="unit-card-price">KES 2.5M <span>/ unit</span></div>
             <div class="unit-card-plan">
               <div class="plan-item"><div class="plan-label">Deposit</div><div class="plan-value">KES 500K</div></div>
-              <div class="plan-item"><div class="plan-label">Monthly</div><div class="plan-value">KES 83K</div></div>
-              <div class="plan-item"><div class="plan-label">Plan</div><div class="plan-value">24 Months</div></div>
-              <div class="plan-item"><div class="plan-label">Capital Value</div><div class="plan-value">KES 3M</div></div>
+              <div class="plan-item"><div class="plan-label">Approx. / month</div><div class="plan-value">KES 83,333</div></div>
+
+
             </div>
-            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%20Studio%20Type%20C%20(KES%202.5M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">WhatsApp Enquiry →</a>
+            <a href="#contact" class="unit-enquire" data-unit="Studio — KES 2.5M (25 m²)">Enquire about this home <span aria-hidden="true">→</span></a>
+            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%2025%20m%C2%B2%20Studio%20(KES%202.5M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">Ask on WhatsApp</a>
           </div>
         </div>
       </div>
@@ -1203,7 +1224,10 @@
       <div id="tab-1br" class="units-grid">
         <div class="unit-card">
           <div class="unit-card-img">
-            <img src="./assets/1BR_3_5.jpeg" alt="Standard 1 Bedroom" />
+            <a href="./assets/1BR_3_5.jpeg" target="_blank" rel="noopener" class="floorplan-link" aria-label="View full floor plan: 1 Bedroom Standard — KES 3.5M (opens in a new tab)">
+              <img src="./assets/1BR_3_5.jpeg" alt="1 Bedroom Standard — KES 3.5M — illustrative floor plan" loading="lazy" decoding="async" />
+              <span class="floorplan-hint">View full floor plan <span aria-hidden="true">↗</span></span>
+            </a>
           </div>
           <div class="unit-card-body">
             <div class="unit-card-type">1 Bedroom · Standard</div>
@@ -1212,16 +1236,20 @@
             <div class="unit-card-price">KES 3.5M <span>/ unit</span></div>
             <div class="unit-card-plan">
               <div class="plan-item"><div class="plan-label">Deposit</div><div class="plan-value">KES 700K</div></div>
-              <div class="plan-item"><div class="plan-label">Monthly</div><div class="plan-value">KES 117K</div></div>
-              <div class="plan-item"><div class="plan-label">Plan</div><div class="plan-value">24 Months</div></div>
-              <div class="plan-item"><div class="plan-label">Capital Value</div><div class="plan-value">KES 4.2M</div></div>
+              <div class="plan-item"><div class="plan-label">Approx. / month</div><div class="plan-value">KES 116,667</div></div>
+
+
             </div>
-            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%20Standard%201%20Bedroom%20(KES%203.5M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">WhatsApp Enquiry →</a>
+            <a href="#contact" class="unit-enquire" data-unit="1 Bedroom Standard — KES 3.5M">Enquire about this home <span aria-hidden="true">→</span></a>
+            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%20Standard%201%20Bedroom%20(KES%203.5M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">Ask on WhatsApp</a>
           </div>
         </div>
         <div class="unit-card">
           <div class="unit-card-img">
-            <img src="./assets/1BR_5M.jpeg" alt="Deluxe 1 Bedroom" />
+            <a href="./assets/1BR_5M.jpeg" target="_blank" rel="noopener" class="floorplan-link" aria-label="View full floor plan: 1 Bedroom Deluxe — KES 5M (opens in a new tab)">
+              <img src="./assets/1BR_5M.jpeg" alt="1 Bedroom Deluxe — KES 5M — illustrative floor plan" loading="lazy" decoding="async" />
+              <span class="floorplan-hint">View full floor plan <span aria-hidden="true">↗</span></span>
+            </a>
           </div>
           <div class="unit-card-body">
             <div class="unit-card-type">1 Bedroom · Deluxe</div>
@@ -1230,16 +1258,20 @@
             <div class="unit-card-price">KES 5M <span>/ unit</span></div>
             <div class="unit-card-plan">
               <div class="plan-item"><div class="plan-label">Deposit</div><div class="plan-value">KES 1M</div></div>
-              <div class="plan-item"><div class="plan-label">Monthly</div><div class="plan-value">KES 166K</div></div>
-              <div class="plan-item"><div class="plan-label">Plan</div><div class="plan-value">24 Months</div></div>
-              <div class="plan-item"><div class="plan-label">Capital Value</div><div class="plan-value">KES 6M</div></div>
+              <div class="plan-item"><div class="plan-label">Approx. / month</div><div class="plan-value">KES 166,667</div></div>
+
+
             </div>
-            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%20Deluxe%201%20Bedroom%20(KES%205M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">WhatsApp Enquiry →</a>
+            <a href="#contact" class="unit-enquire" data-unit="1 Bedroom Deluxe — KES 5M">Enquire about this home <span aria-hidden="true">→</span></a>
+            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%20Deluxe%201%20Bedroom%20(KES%205M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">Ask on WhatsApp</a>
           </div>
         </div>
         <div class="unit-card">
           <div class="unit-card-img">
-            <img src="./assets/Duplex_1BR_6M.jpeg" alt="Duplex 1 Bedroom" />
+            <a href="./assets/Duplex_1BR_6M.jpeg" target="_blank" rel="noopener" class="floorplan-link" aria-label="View full floor plan: 1 Bedroom Duplex — KES 6M (opens in a new tab)">
+              <img src="./assets/Duplex_1BR_6M.jpeg" alt="1 Bedroom Duplex — KES 6M — illustrative floor plan" loading="lazy" decoding="async" />
+              <span class="floorplan-hint">View full floor plan <span aria-hidden="true">↗</span></span>
+            </a>
           </div>
           <div class="unit-card-body">
             <div class="unit-card-type">1 Bedroom · Duplex</div>
@@ -1248,20 +1280,24 @@
             <div class="unit-card-price">KES 6M <span>/ unit</span></div>
             <div class="unit-card-plan">
               <div class="plan-item"><div class="plan-label">Deposit</div><div class="plan-value">KES 1.2M</div></div>
-              <div class="plan-item"><div class="plan-label">Monthly</div><div class="plan-value">KES 200K</div></div>
-              <div class="plan-item"><div class="plan-label">Plan</div><div class="plan-value">24 Months</div></div>
-              <div class="plan-item"><div class="plan-label">Capital Value</div><div class="plan-value">KES 7.2M</div></div>
+              <div class="plan-item"><div class="plan-label">Approx. / month</div><div class="plan-value">KES 200,000</div></div>
+
+
             </div>
-            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%20Duplex%201%20Bedroom%20(KES%206M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">WhatsApp Enquiry →</a>
+            <a href="#contact" class="unit-enquire" data-unit="1 Bedroom Duplex — KES 6M">Enquire about this home <span aria-hidden="true">→</span></a>
+            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%20Duplex%201%20Bedroom%20(KES%206M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">Ask on WhatsApp</a>
           </div>
         </div>
       </div>
 
       <!-- 2 BEDROOM -->
       <div id="tab-2br" class="units-grid">
-        <div class="unit-card" style="max-width:400px">
+        <div class="unit-card" >
           <div class="unit-card-img">
-            <img src="./assets/2BR_7M.jpeg" alt="2 Bedroom" />
+            <a href="./assets/2BR_7M.jpeg" target="_blank" rel="noopener" class="floorplan-link" aria-label="View full floor plan: 2 Bedroom — KES 7M (opens in a new tab)">
+              <img src="./assets/2BR_7M.jpeg" alt="2 Bedroom — KES 7M — illustrative floor plan" loading="lazy" decoding="async" />
+              <span class="floorplan-hint">View full floor plan <span aria-hidden="true">↗</span></span>
+            </a>
           </div>
           <div class="unit-card-body">
             <div class="unit-card-type">2 Bedroom</div>
@@ -1270,11 +1306,12 @@
             <div class="unit-card-price">KES 7M <span>/ unit</span></div>
             <div class="unit-card-plan">
               <div class="plan-item"><div class="plan-label">Deposit</div><div class="plan-value">KES 1.4M</div></div>
-              <div class="plan-item"><div class="plan-label">Monthly</div><div class="plan-value">KES 233K</div></div>
-              <div class="plan-item"><div class="plan-label">Plan</div><div class="plan-value">24 Months</div></div>
-              <div class="plan-item"><div class="plan-label">Capital Value</div><div class="plan-value">KES 8.4M</div></div>
+              <div class="plan-item"><div class="plan-label">Approx. / month</div><div class="plan-value">KES 233,333</div></div>
+
+
             </div>
-            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%202%20Bedroom%20(KES%207M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">WhatsApp Enquiry →</a>
+            <a href="#contact" class="unit-enquire" data-unit="2 Bedroom — KES 7M">Enquire about this home <span aria-hidden="true">→</span></a>
+            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%202%20Bedroom%20(KES%207M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">Ask on WhatsApp</a>
           </div>
         </div>
       </div>
@@ -1283,7 +1320,10 @@
       <div id="tab-3br" class="units-grid">
         <div class="unit-card">
           <div class="unit-card-img">
-            <img src="./assets/3BR__10M.jpeg" alt="3 Bedroom 10M" />
+            <a href="./assets/3BR__10M.jpeg" target="_blank" rel="noopener" class="floorplan-link" aria-label="View full floor plan: 3 Bedroom — KES 10M (opens in a new tab)">
+              <img src="./assets/3BR__10M.jpeg" alt="3 Bedroom — KES 10M — illustrative floor plan" loading="lazy" decoding="async" />
+              <span class="floorplan-hint">View full floor plan <span aria-hidden="true">↗</span></span>
+            </a>
           </div>
           <div class="unit-card-body">
             <div class="unit-card-type">3 Bedroom · Option A</div>
@@ -1292,16 +1332,20 @@
             <div class="unit-card-price">KES 10M <span>/ unit</span></div>
             <div class="unit-card-plan">
               <div class="plan-item"><div class="plan-label">Deposit</div><div class="plan-value">KES 2M</div></div>
-              <div class="plan-item"><div class="plan-label">Monthly</div><div class="plan-value">KES 333K</div></div>
-              <div class="plan-item"><div class="plan-label">Plan</div><div class="plan-value">24 Months</div></div>
-              <div class="plan-item"><div class="plan-label">Capital Value</div><div class="plan-value">KES 12M</div></div>
+              <div class="plan-item"><div class="plan-label">Approx. / month</div><div class="plan-value">KES 333,333</div></div>
+
+
             </div>
-            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%203%20Bedroom%20Option%20A%20(KES%2010M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">WhatsApp Enquiry →</a>
+            <a href="#contact" class="unit-enquire" data-unit="3 Bedroom — KES 10M">Enquire about this home <span aria-hidden="true">→</span></a>
+            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%203%20Bedroom%20Option%20A%20(KES%2010M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">Ask on WhatsApp</a>
           </div>
         </div>
         <div class="unit-card">
           <div class="unit-card-img">
-            <img src="./assets/3BR_12M.jpeg" alt="3 Bedroom 12M" />
+            <a href="./assets/3BR_12M.jpeg" target="_blank" rel="noopener" class="floorplan-link" aria-label="View full floor plan: 3 Bedroom (Premium) — KES 12M (opens in a new tab)">
+              <img src="./assets/3BR_12M.jpeg" alt="3 Bedroom (Premium) — KES 12M — illustrative floor plan" loading="lazy" decoding="async" />
+              <span class="floorplan-hint">View full floor plan <span aria-hidden="true">↗</span></span>
+            </a>
           </div>
           <div class="unit-card-body">
             <div class="unit-card-type">3 Bedroom · Option B</div>
@@ -1310,20 +1354,24 @@
             <div class="unit-card-price">KES 12M <span>/ unit</span></div>
             <div class="unit-card-plan">
               <div class="plan-item"><div class="plan-label">Deposit</div><div class="plan-value">KES 2.4M</div></div>
-              <div class="plan-item"><div class="plan-label">Monthly</div><div class="plan-value">KES 400K</div></div>
-              <div class="plan-item"><div class="plan-label">Plan</div><div class="plan-value">24 Months</div></div>
-              <div class="plan-item"><div class="plan-label">Capital Value</div><div class="plan-value">KES 14.4M</div></div>
+              <div class="plan-item"><div class="plan-label">Approx. / month</div><div class="plan-value">KES 400,000</div></div>
+
+
             </div>
-            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%203%20Bedroom%20Option%20B%20(KES%2012M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">WhatsApp Enquiry →</a>
+            <a href="#contact" class="unit-enquire" data-unit="3 Bedroom (Premium) — KES 12M">Enquire about this home <span aria-hidden="true">→</span></a>
+            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%203%20Bedroom%20Option%20B%20(KES%2012M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">Ask on WhatsApp</a>
           </div>
         </div>
       </div>
 
       <!-- 4 BEDROOM -->
       <div id="tab-4br" class="units-grid">
-        <div class="unit-card" style="max-width:420px">
+        <div class="unit-card" >
           <div class="unit-card-img">
-            <img src="./assets/4BR_16_5M.jpeg" alt="4 Bedroom" />
+            <a href="./assets/4BR_16_5M.jpeg" target="_blank" rel="noopener" class="floorplan-link" aria-label="View full floor plan: 4 Bedroom — KES 16.5M (opens in a new tab)">
+              <img src="./assets/4BR_16_5M.jpeg" alt="4 Bedroom — KES 16.5M — illustrative floor plan" loading="lazy" decoding="async" />
+              <span class="floorplan-hint">View full floor plan <span aria-hidden="true">↗</span></span>
+            </a>
           </div>
           <div class="unit-card-body">
             <div class="unit-card-type">4 Bedroom · Penthouse Level</div>
@@ -1332,77 +1380,46 @@
             <div class="unit-card-price">KES 16.5M <span>/ unit</span></div>
             <div class="unit-card-plan">
               <div class="plan-item"><div class="plan-label">Deposit</div><div class="plan-value">KES 3.3M</div></div>
-              <div class="plan-item"><div class="plan-label">Monthly</div><div class="plan-value">KES 550K</div></div>
-              <div class="plan-item"><div class="plan-label">Plan</div><div class="plan-value">24 Months</div></div>
-              <div class="plan-item"><div class="plan-label">Capital Value</div><div class="plan-value">KES 18.15M</div></div>
+              <div class="plan-item"><div class="plan-label">Approx. / month</div><div class="plan-value">KES 550,000</div></div>
+
+
             </div>
-            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%204%20Bedroom%20(KES%2016.5M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">WhatsApp Enquiry →</a>
+            <a href="#contact" class="unit-enquire" data-unit="4 Bedroom — KES 16.5M">Enquire about this home <span aria-hidden="true">→</span></a>
+            <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20the%204%20Bedroom%20(KES%2016.5M)%20at%20Prestigious%20Residence.%20Please%20send%20more%20details." class="unit-card-cta" target="_blank" rel="noopener">Ask on WhatsApp</a>
           </div>
         </div>
       </div>
 
     </div>
+    <p class="listing-note">All layouts are illustrative. Prices and available units must be confirmed. Approximate monthly figures use an 80% balance over 24 months; the booking fee and other charges are not included.</p>
   </div>
 </section>
 
-<!-- CAPITAL GAINS / INVESTMENT -->
-<section class="capital" id="invest">
+<!-- PAYMENT COMPARISON -->
+<section class="capital" id="invest" aria-labelledby="paymentTitle">
   <div class="capital-inner">
-    <div class="section-header fade-up">
-      <span class="section-eyebrow">Investment Returns</span>
-      <h2 class="section-title" style="color:white">Your money works <em>harder</em> here</h2>
+    <div class="section-header">
+      <span class="section-eyebrow">Plan your purchase</span>
+      <h2 class="section-title" id="paymentTitle">The numbers, <em>clearly laid out.</em></h2>
       <div class="section-line"></div>
     </div>
-    <table class="capital-table fade-up">
-      <thead>
-        <tr>
-          <th>Unit Type</th>
-          <th>Buy Price</th>
-          <th>Size</th>
-          <th>Projected Value</th>
-          <th>Capital Gain</th>
-        </tr>
-      </thead>
+    <p class="section-intro">A 20% deposit and the remaining 80% spread over 24 months, based on the currently listed plan. Ask for a written quote for your chosen unit.</p>
+    <table class="capital-table" role="table">
+      <caption>Illustrative payment breakdown for selected layouts</caption>
+      <thead><tr role="row"><th scope="col">Layout</th><th scope="col">Listed price</th><th scope="col">Floor area</th><th scope="col">20% deposit</th><th scope="col">Approx. / month</th></tr></thead>
       <tbody>
-        <tr>
-          <td>Studio (Type A)</td>
-          <td>KES 1,750,000</td>
-          <td>15 m²</td>
-          <td>KES 2,100,000</td>
-          <td class="gain-val">+KES 350,000 (20%)</td>
-        </tr>
-        <tr>
-          <td>Standard 1 Bedroom</td>
-          <td>KES 3,500,000</td>
-          <td>31 m²</td>
-          <td>KES 4,200,000</td>
-          <td class="gain-val">+KES 700,000 (20%)</td>
-        </tr>
-        <tr>
-          <td>2 Bedroom</td>
-          <td>KES 7,000,000</td>
-          <td>61 m²</td>
-          <td>KES 8,400,000</td>
-          <td class="gain-val">+KES 1,400,000 (20%)</td>
-        </tr>
-        <tr>
-          <td>3 Bedroom</td>
-          <td>KES 12,000,000</td>
-          <td>120 m²</td>
-          <td>KES 14,400,000</td>
-          <td class="gain-val">+KES 2,400,000 (20%)</td>
-        </tr>
-        <tr>
-          <td>4 Bedroom</td>
-          <td>KES 16,500,000</td>
-          <td>165 m²</td>
-          <td>KES 18,150,000</td>
-          <td class="gain-val">+KES 1,650,000 (10%)</td>
-        </tr>
+        <tr role="row"><th scope="row">Studio · 15 m²</th><td data-label="Listed price">KES 1,750,000</td><td data-label="Floor area">15 m²</td><td data-label="20% deposit">KES 350,000</td><td data-label="Approx. / month">KES 58,333</td></tr>
+        <tr role="row"><th scope="row">Standard 1 bedroom</th><td data-label="Listed price">KES 3,500,000</td><td data-label="Floor area">31 m²</td><td data-label="20% deposit">KES 700,000</td><td data-label="Approx. / month">KES 116,667</td></tr>
+        <tr role="row"><th scope="row">2 bedroom</th><td data-label="Listed price">KES 7,000,000</td><td data-label="Floor area">61 m²</td><td data-label="20% deposit">KES 1,400,000</td><td data-label="Approx. / month">KES 233,333</td></tr>
+        <tr role="row"><th scope="row">Premium 3 bedroom</th><td data-label="Listed price">KES 12,000,000</td><td data-label="Floor area">120 m²</td><td data-label="20% deposit">KES 2,400,000</td><td data-label="Approx. / month">KES 400,000</td></tr>
+        <tr role="row"><th scope="row">4 bedroom</th><td data-label="Listed price">KES 16,500,000</td><td data-label="Floor area">165 m²</td><td data-label="20% deposit">KES 3,300,000</td><td data-label="Approx. / month">KES 550,000</td></tr>
       </tbody>
     </table>
-    <p style="color:rgba(255,255,255,0.35);font-size:0.75rem;margin-top:16px;text-align:center">*Projected values are estimates based on market trends and are not guaranteed.</p>
-    <p style="color:rgba(255,255,255,0.25);font-size:0.72rem;margin-top:6px;text-align:center;line-height:1.6">Projected capital values shown are illustrative and subject to market conditions. Not a guarantee of future returns. Past market performance does not guarantee future results.</p>
+    <div class="payment-note">
+      <h3>What these figures include</h3>
+      <p>Monthly amount = (listed price − 20% deposit) ÷ 24, rounded to the nearest shilling. These are illustrations, not an offer or a financing approval. Confirm how the booking fee, taxes, legal fees and any other charges affect the total and final instalment.</p>
+      <p>No rental yield or future resale value is promised. Prices, payment terms and completion dates are subject to written confirmation and the sale agreement.</p>
+    </div>
   </div>
 </section>
 
@@ -1426,7 +1443,7 @@
         <div class="step-num">2</div>
         <div class="step-content">
           <div class="step-title">Booking Fee Payment</div>
-          <div class="step-desc">Pay the non-refundable KES 100,000 booking fee to secure your unit. This confirms your commitment and locks in your price.</div>
+          <div class="step-desc">The advertised booking fee is KES 100,000 and is stated as non-refundable. Request the written terms, confirm the available unit and verify payment details before paying.</div>
           <span class="step-tag">KES 100,000 — Non-refundable</span>
         </div>
       </div>
@@ -1441,7 +1458,7 @@
         <div class="step-num">4</div>
         <div class="step-content">
           <div class="step-title">Agreement & Installments</div>
-          <div class="step-desc">Sign your sale agreement and begin your 24-month installment plan. Completion expected October 2026.</div>
+          <div class="step-desc">Review the sale agreement and the written 24-month payment schedule before signing. Confirm the latest completion target with the sales team.</div>
           <span class="step-tag">KRA Pin + Copy of National ID required</span>
         </div>
       </div>
@@ -1450,27 +1467,19 @@
 </section>
 
 <!-- REQUIREMENTS -->
-<section class="requirements">
-  <div class="section-header fade-up">
-    <span class="section-eyebrow">What You Need</span>
-    <h2 class="section-title" style="font-size:2rem">Requirements to <em>invest</em></h2>
-  </div>
-  <div class="req-cards fade-up">
-    <div class="req-card">
-      <div class="req-card-icon">🪪</div>
-      <div class="req-card-title">KRA PIN</div>
-      <div class="req-card-desc">Your Kenya Revenue Authority PIN certificate</div>
+<section class="requirements" id="buyer-checklist" aria-labelledby="buyerTitle">
+  <div class="buyer-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Before you commit</span>
+      <h2 class="section-title" id="buyerTitle">See the detail. <em>Ask for the evidence.</em></h2>
+      <p class="section-intro">Buying off-plan is a considered decision. Use your enquiry to request the information you need, with time to review it.</p>
     </div>
-    <div class="req-card">
-      <div class="req-card-icon">📋</div>
-      <div class="req-card-title">National ID</div>
-      <div class="req-card-desc">Copy of your National Identification Card</div>
+    <div class="buyer-grid">
+      <article class="buyer-card"><span class="buyer-number" aria-hidden="true">01</span><h3>See current progress</h3><p>Ask for dated site photos, a construction update and the latest completion schedule. Website renders show the design, not today’s progress.</p></article>
+      <article class="buyer-card"><span class="buyer-number" aria-hidden="true">02</span><h3>Know who you’re buying from</h3><p>Request the developer’s legal name, project approvals and ownership documents for independent review before signing.</p></article>
+      <article class="buyer-card"><span class="buyer-number" aria-hidden="true">03</span><h3>Get a written breakdown</h3><p>Confirm the available unit, final specification, all charges, booking terms and payment schedule in writing.</p></article>
     </div>
-    <div class="req-card">
-      <div class="req-card-icon">💰</div>
-      <div class="req-card-title">Booking Fee</div>
-      <div class="req-card-desc">KES 100,000 non-refundable commitment fee</div>
-    </div>
+    <div class="buyer-action"><p>No documents or payment are needed to send an enquiry.</p><a class="btn-primary" href="#contact" data-next-step="documents">Ask for project information</a></div>
   </div>
 </section>
 
@@ -1489,19 +1498,19 @@
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">What unit types are available?<span class="faq-icon" aria-hidden="true">+</span></button>
-        <div class="faq-answer" role="region"><div class="faq-answer-inner">Studios (Type A, B, C), 1 Bedrooms (Standard, Deluxe, Duplex), 2 Bedroom, 3 Bedroom (Option A — 95 m², Option B — 120 m²), and 4 Bedroom (165 m²). Ten unit types in total.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">Studios (15 m², 21 m² and 25 m²), 1 Bedrooms (Standard, Deluxe, Duplex), 2 Bedroom, 3 Bedroom (Option A — 95 m², Option B — 120 m²), and 4 Bedroom (165 m²). Ten unit types in total.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">What is the starting price?<span class="faq-icon" aria-hidden="true">+</span></button>
-        <div class="faq-answer" role="region"><div class="faq-answer-inner">Studios start from KES 1,750,000. A 20% deposit of KES 350,000 secures your unit. No bank loan required.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">The listed starting price is KES 1,750,000 for a 15 m² studio, with a 20% deposit of KES 350,000. Request a written quote to confirm current availability, the booking fee and all other charges.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">What is the payment plan?<span class="faq-icon" aria-hidden="true">+</span></button>
-        <div class="faq-answer" role="region"><div class="faq-answer-inner">Pay 20% as a deposit on signing, then spread the remaining 80% over 24 equal monthly instalments. No interest, no bank involvement, no hidden charges.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">The listed plan is a 20% deposit with the remaining 80% spread over 24 months. Ask for the full written schedule, including the booking fee and other charges, before committing.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">Is the project off-plan or ready?<span class="faq-icon" aria-hidden="true">+</span></button>
-        <div class="faq-answer" role="region"><div class="faq-answer-inner">Off-plan, currently under active construction. Completion is expected October 2026. Buying now locks in today's pricing before values increase.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">The development is marketed off-plan. October 2026 is the advertised completion target, not a confirmed handover date. Ask for a current, dated construction update and the latest schedule.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">Are there financing or mortgage options?<span class="faq-icon" aria-hidden="true">+</span></button>
@@ -1509,7 +1518,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">What documents are required to book?<span class="faq-icon" aria-hidden="true">+</span></button>
-        <div class="faq-answer" role="region"><div class="faq-answer-inner">A copy of your National ID, your KRA PIN certificate, and payment of the KES 100,000 non-refundable booking fee to lock in your unit.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">The published booking requirements list a National ID copy, KRA PIN certificate and a KES 100,000 non-refundable booking fee. Confirm the terms with the sales team first. Do not send identity documents through this enquiry form; no documents or payment are needed to ask a question.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">Can foreigners or diaspora buyers purchase?<span class="faq-icon" aria-hidden="true">+</span></button>
@@ -1521,7 +1530,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">How do I book a viewing?<span class="faq-icon" aria-hidden="true">+</span></button>
-        <div class="faq-answer" role="region"><div class="faq-answer-inner">Send us a WhatsApp message at <a href="https://wa.me/254748889503" style="color:var(--gold)">+254 748 889 503</a> or use the enquiry form below. We confirm times Monday–Saturday, 9am–5pm.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">Use the enquiry form below or <a href="https://wa.me/254748889503">message the sales team on WhatsApp</a>. Request your preferred time; a viewing is booked only once the sales team confirms it.</div></div>
       </div>
     </div>
   </div>
@@ -1532,21 +1541,22 @@
   <div class="contact-inner">
     <div class="section-header fade-up">
       <span class="section-eyebrow">Get In Touch</span>
-      <h2 class="section-title" style="color:white">Ready to <em>invest</em>?</h2>
+      <h2 class="section-title" style="color:white">Let’s find <em>your space.</em></h2>
       <div class="section-line"></div>
     </div>
     <p class="contact-desc fade-up">
-      Tell us what you are looking for. A property advisor will respond with matching availability,
-      the payment plan and the clearest next step for your purchase or investment.
+      Start with your preferred home and contact details. Then tell us how we can help—whether you’re ready to visit or simply exploring.
     </p>
-    <div class="contact-quick-cta fade-up">
+    <div class="enquiry-layout">
+    <aside class="enquiry-aside" aria-label="Other ways to enquire">
+    <div class="contact-quick-cta">
       <a class="quick-cta-card" href="https://wa.me/254748889503?text=Hi!%20I'd%20like%20to%20book%20a%20site%20visit%20at%20Prestigious%20Residence.%20Please%20confirm%20a%20convenient%20time." target="_blank" rel="noopener">
         <svg class="quick-cta-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 9v7.5m-9-6h.008v.008H12V13.5zm0 3h.008v.008H12v-.008zm-3 0h.008v.008H9v-.008zm6 0h.008v.008H15v-.008z" />
         </svg>
-        <div class="quick-cta-title">Book a Site Visit</div>
-        <div class="quick-cta-desc">Visit the development in person. Mon–Sat, 9am–5pm.</div>
-        <div class="quick-cta-btn">WhatsApp to Book →</div>
+        <div class="quick-cta-title">Arrange a site visit</div>
+        <div class="quick-cta-desc">Message the sales team to confirm a convenient time.</div>
+        <div class="quick-cta-btn">Ask about a visit ↗</div>
       </a>
       <a class="quick-cta-card" href="https://wa.me/254748889503?text=Hi!%20Please%20send%20me%20the%20Prestigious%20Residence%20brochure%20with%20full%20unit%20specs%20and%20pricing." target="_blank" rel="noopener">
         <svg class="quick-cta-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -1557,80 +1567,80 @@
         <div class="quick-cta-btn">WhatsApp to Request →</div>
       </a>
     </div>
-    <form class="contact-form fade-up" action="https://formspree.io/f/xyknjkbk" method="POST" id="contactForm">
+    <div class="enquiry-expectations"><h3>What happens next?</h3><p>The sales team can confirm availability, clarify your payment options and arrange a viewing with you.</p><p>A viewing request is not a confirmed appointment. You don’t need to make a payment to enquire.</p></div>
+    </aside>
+    <form class="contact-form" action="https://formspree.io/f/xyknjkbk" method="POST" id="contactForm" aria-label="Property enquiry">
       <input type="hidden" name="_subject" value="New Enquiry — Prestigious Residence" />
       <input type="hidden" name="source_url" id="sourceUrl" />
       <input type="hidden" name="utm_source" id="utmSource" />
       <input type="hidden" name="utm_medium" id="utmMedium" />
       <input type="hidden" name="utm_campaign" id="utmCampaign" />
       <input type="hidden" name="utm_content" id="utmContent" />
-      <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" name="name" placeholder="Your full name" required />
+      <div class="honeypot" aria-hidden="true"><label for="companyWebsite">Leave this empty</label><input type="text" id="companyWebsite" name="_gotcha" tabindex="-1" autocomplete="off" /></div>
+      <ol class="form-progress" aria-label="Enquiry steps" hidden>
+        <li aria-current="step"><span aria-hidden="true">1</span> Your home &amp; details</li>
+        <li><span aria-hidden="true">2</span> How we can help</li>
+      </ol>
+      <fieldset id="enquiryStep1" class="enquiry-step">
+        <legend><span class="form-step-heading" id="step1Heading" tabindex="-1">Start with your ideal home</span></legend>
+        <p class="form-step-description">Just three details to get started. Not sure which layout? We can help you choose.</p>
+        <div class="enquiry-grid">
+          <div class="form-group full">
+            <label for="enquiryUnit">Home of interest <span class="required-note">(required)</span></label>
+            <select name="unit" id="enquiryUnit" required aria-describedby="unitError">
+              <option value="">Choose a layout</option>
+              <option>Studio — KES 1.75M (15 m²)</option>
+              <option>Studio — KES 2.1M (21 m²)</option>
+              <option>Studio — KES 2.5M (25 m²)</option>
+              <option>1 Bedroom Standard — KES 3.5M</option>
+              <option>1 Bedroom Deluxe — KES 5M</option>
+              <option>1 Bedroom Duplex — KES 6M</option>
+              <option>2 Bedroom — KES 7M</option>
+              <option>3 Bedroom — KES 10M</option>
+              <option>3 Bedroom (Premium) — KES 12M</option>
+              <option>4 Bedroom — KES 16.5M</option>
+              <option value="Help me choose">Help me choose</option>
+            </select>
+            <span class="field-error" id="unitError" hidden></span>
+          </div>
+          <div class="form-group">
+            <label for="enquiryName">Full name <span class="required-note">(required)</span></label>
+            <input type="text" name="name" id="enquiryName" placeholder="Your full name" autocomplete="name" minlength="2" maxlength="100" required aria-describedby="nameError" />
+            <span class="field-error" id="nameError" hidden></span>
+          </div>
+          <div class="form-group">
+            <label for="enquiryPhone">Phone <span class="required-note">(required)</span></label>
+            <input type="tel" name="phone" id="enquiryPhone" placeholder="e.g. +254 7XX XXX XXX" autocomplete="tel" inputmode="tel" minlength="7" maxlength="25" required aria-describedby="phoneHint phoneError" />
+            <span class="field-hint" id="phoneHint">Include your country code if outside Kenya.</span>
+            <span class="field-error" id="phoneError" hidden></span>
+          </div>
+        </div>
+        <div class="step-actions" hidden id="step1Actions"><button type="button" class="enquiry-primary" id="enquiryNext">Continue <span aria-hidden="true">→</span></button><span class="field-hint">Step 1 of 2 · Nothing sent yet</span></div>
+      </fieldset>
+      <fieldset id="enquiryStep2" class="enquiry-step">
+        <legend><span class="form-step-heading" id="step2Heading" tabindex="-1">Make it personal</span></legend>
+        <p class="form-step-description">These details are optional. They help the sales team tailor their response.</p>
+        <p class="enquiry-summary" id="enquirySummary" hidden></p>
+        <div class="enquiry-grid">
+          <div class="form-group"><label for="enquiryPurpose">I’m looking for</label><select name="buying_purpose" id="enquiryPurpose"><option value="">Select an option (optional)</option><option value="home">A home to live in</option><option value="investment">A rental investment</option><option value="both">Considering both</option></select></div>
+          <div class="form-group"><label for="enquiryTimeline">Purchase timeline</label><select name="purchase_timeline" id="enquiryTimeline"><option value="">Select an option (optional)</option><option value="0-30-days">Within 30 days</option><option value="1-3-months">Within 1–3 months</option><option value="3-6-months">Within 3–6 months</option><option value="researching">Just researching</option></select></div>
+          <div class="form-group"><label for="enquiryAction">Preferred next step</label><select name="preferred_next_step" id="enquiryAction"><option value="">Select an option (optional)</option><option value="site-visit">Request a site visit</option><option value="brochure">Brochure &amp; price list</option><option value="call">Call me</option><option value="whatsapp">WhatsApp me</option><option value="documents">Project information &amp; documents</option></select></div>
+          <div class="form-group"><label for="enquiryEmail">Email <span class="required-note">(optional)</span></label><input type="email" name="email" id="enquiryEmail" placeholder="you@example.com" autocomplete="email" maxlength="254" aria-describedby="emailError" /><span class="field-error" id="emailError" hidden></span></div>
+        </div>
+        <details class="enquiry-message"><summary>Add a question or preferred viewing time</summary><div class="form-group"><label for="enquiryMessage">Your message <span class="required-note">(optional)</span></label><textarea name="message" id="enquiryMessage" maxlength="2000" placeholder="What would you like to know?"></textarea></div></details>
+        <div class="step-actions"><button type="button" class="enquiry-back" id="enquiryBack" hidden>Back</button><button type="submit" class="enquiry-primary" id="submitBtn">Send my enquiry <span aria-hidden="true">→</span></button></div>
+      </fieldset>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite" tabindex="-1" hidden><p id="formStatusText"></p><a id="formFallback" href="https://wa.me/254748889503" target="_blank" rel="noopener" hidden>Contact sales on WhatsApp instead ↗</a></div>
+      <div class="enquiry-success" id="enquirySuccess" role="status" tabindex="-1" hidden>
+        <span class="success-mark" aria-hidden="true">✓</span><h3>Thank you. Your enquiry is in.</h3>
+        <p id="successMessage">The sales team has your request and can contact you about availability and your next step.</p>
+        <p class="field-hint">No payment or booking has been made. Any viewing time still needs confirmation.</p>
+        <button type="button" class="enquiry-back" id="newEnquiry">Make another enquiry</button>
       </div>
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input type="tel" name="phone" placeholder="+254 7XX XXX XXX" required />
-      </div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" name="email" placeholder="your@email.com" />
-      </div>
-      <div class="form-group">
-        <label>Unit of Interest</label>
-        <select name="unit" required>
-          <option value="">Select a unit type</option>
-          <option>Studio — from KES 1.75M</option>
-          <option>1 Bedroom Standard — KES 3.5M</option>
-          <option>1 Bedroom Deluxe — KES 5M</option>
-          <option>1 Bedroom Duplex — KES 6M</option>
-          <option>2 Bedroom — KES 7M</option>
-          <option>3 Bedroom — KES 10M</option>
-          <option>3 Bedroom (Premium) — KES 12M</option>
-          <option>4 Bedroom — KES 16.5M</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Buying Purpose</label>
-        <select name="buying_purpose" required>
-          <option value="">Select your goal</option>
-          <option value="home">A home to live in</option>
-          <option value="investment">Rental investment</option>
-          <option value="both">Considering both</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Purchase Timeline</label>
-        <select name="purchase_timeline" required>
-          <option value="">When would you like to buy?</option>
-          <option value="0-30-days">Within 30 days</option>
-          <option value="1-3-months">Within 1–3 months</option>
-          <option value="3-6-months">Within 3–6 months</option>
-          <option value="researching">Just researching</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Preferred Next Step</label>
-        <select name="preferred_next_step" required>
-          <option value="">How should we help?</option>
-          <option value="site-visit">Book a site visit</option>
-          <option value="brochure">Send brochure &amp; price list</option>
-          <option value="call">Call me</option>
-          <option value="whatsapp">WhatsApp me</option>
-        </select>
-      </div>
-      <div class="form-group full">
-        <label>Message (Optional)</label>
-        <textarea name="message" placeholder="Tell us more about your needs or questions..."></textarea>
-      </div>
-      <div class="form-submit">
-        <button type="submit" id="submitBtn">Get Availability &amp; Payment Plan</button>
-      </div>
-      <div class="form-trust" aria-label="Enquiry commitments">
-        <span>✓ No obligation</span><span>✓ Your details stay private</span><span>✓ Direct response from the property team</span>
-      </div>
-      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+      <p class="enquiry-privacy" id="enquiryPrivacy">By sending, you ask the sales team to contact you about this property enquiry. Submissions are processed by <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Formspree</a>. Don’t include identity documents or financial information. This form does not take payments or confirm bookings.</p>
+      <noscript><p class="field-hint">Both steps are shown because JavaScript is off. Sending will open Formspree’s confirmation page.</p></noscript>
     </form>
+    </div>
     <div class="contact-alt fade-up">
       <div class="contact-method">
         <div class="contact-method-label">WhatsApp / Call</div>
@@ -1642,137 +1652,27 @@
       </div>
       <div class="contact-method">
         <div class="contact-method-label">Site Address</div>
-        <a class="contact-method-value" href="https://maps.app.goo.gl/Sd9cjX75icJV3e4y9" target="_blank">1st Ave Safari Park, Nairobi</a>
+        <a class="contact-method-value" href="https://maps.app.goo.gl/Sd9cjX75icJV3e4y9" target="_blank" rel="noopener">1st Ave Safari Park, Nairobi</a>
       </div>
     </div>
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">PRESTIGIOUS RESIDENCE</div>
   <div class="footer-note">© 2026 Prestigious Residence. 1st Avenue Safari Park, Nairobi, Kenya. All rights reserved.</div>
-  <div style="font-size:0.68rem;color:rgba(255,255,255,0.2);margin-top:12px;border-top:1px solid rgba(255,255,255,0.06);padding-top:12px;line-height:1.6;text-align:center;max-width:800px;margin-left:auto;margin-right:auto">Prices and availability are subject to confirmation at time of booking. Images, renders, and floor plans are illustrative only and may vary from the final product. All transactions are subject to a formal sale agreement.</div>
+  <div class="footer-legal">Prices and availability are subject to confirmation at time of booking. Images, renders, and floor plans are illustrative only and may vary from the final product. All transactions are subject to a formal sale agreement.</div>
 </footer>
 
 <!-- FLOATING WHATSAPP -->
 <a href="https://wa.me/254748889503?text=Hi!%20I'm%20interested%20in%20Prestigious%20Residence%20apartments." 
-   class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+   class="whatsapp-float" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat with sales on WhatsApp (opens in a new tab)">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<script>
-  // Tab switching
-  function switchTab(btn, panelId) {
-    document.querySelectorAll('.unit-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.unit-panels > div').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(panelId).classList.add('active');
-  }
 
-  // Mobile menu
-  function toggleMenu() {
-    document.getElementById('mobileNav').classList.toggle('open');
-    const trigger = document.querySelector('.hamburger');
-    if (trigger) trigger.setAttribute('aria-expanded', document.getElementById('mobileNav').classList.contains('open'));
-  }
-
-  // Scroll animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // Form submission via Formspree AJAX
-  const form = document.getElementById('contactForm');
-  const submitBtn = document.getElementById('submitBtn');
-  const formStatus = document.getElementById('formStatus');
-  const params = new URLSearchParams(window.location.search);
-  document.getElementById('sourceUrl').value = window.location.href;
-  ['Source', 'Medium', 'Campaign', 'Content'].forEach(function(key) {
-    const field = document.getElementById('utm' + key);
-    if (field) field.value = params.get('utm_' + key.toLowerCase()) || '';
-  });
-
-  function trackLeadEvent(name, data) {
-    if (typeof window.gtag === 'function') window.gtag('event', name, data || {});
-    if (typeof window.fbq === 'function') window.fbq('trackCustom', name, data || {});
-  }
-
-  document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
-    link.addEventListener('click', function() {
-      trackLeadEvent('whatsapp_enquiry', { link_text: link.textContent.trim(), destination: link.href });
-    });
-  });
-  if (form) {
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      submitBtn.textContent = 'Sending...';
-      submitBtn.disabled = true;
-      submitBtn.style.opacity = '0.7';
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-        if (response.ok) {
-          submitBtn.textContent = '✓ Enquiry received';
-          submitBtn.style.background = '#4ade80';
-          submitBtn.style.color = '#0d2818';
-          submitBtn.style.opacity = '1';
-          form.reset();
-          formStatus.textContent = 'Thank you. Your enquiry has been recorded and a property advisor will contact you with availability, pricing and your requested next step.';
-          formStatus.classList.add('visible');
-          trackLeadEvent('generate_lead', { form_name: 'property_enquiry' });
-          setTimeout(() => {
-            submitBtn.textContent = 'Get Availability & Payment Plan';
-            submitBtn.style.background = '';
-            submitBtn.style.color = '';
-            submitBtn.disabled = false;
-          }, 5000);
-        } else {
-          throw new Error('Form error');
-        }
-      } catch {
-        submitBtn.textContent = 'Could not send — WhatsApp us instead';
-        submitBtn.style.background = '#ef4444';
-        submitBtn.style.opacity = '1';
-        submitBtn.disabled = false;
-        setTimeout(() => {
-          submitBtn.textContent = 'Get Availability & Payment Plan';
-          submitBtn.style.background = '';
-        }, 3000);
-      }
-    });
-  }
-
-  // FAQ accordion
-  document.querySelectorAll('.faq-question').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var item = this.closest('.faq-item');
-      var isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(el) {
-        el.classList.remove('open');
-        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-      });
-      if (!isOpen) {
-        item.classList.add('open');
-        this.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-
-  // Sticky nav shadow on scroll
-  window.addEventListener('scroll', () => {
-    document.querySelector('nav').style.boxShadow =
-      window.scrollY > 50 ? '0 4px 24px rgba(0,0,0,0.3)' : 'none';
-  });
-</script>
 </body>
 </html>

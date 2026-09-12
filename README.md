@@ -1,87 +1,54 @@
-# Prestigious Residence — Website & Marketing Guide
+# Prestigious Residence — website
 
-## Sales-system readiness
+A static HTML/CSS/JavaScript website deployed through the existing GitHub → Vercel integration.
 
-The website now captures the details needed to qualify a property enquiry: unit interest, buying purpose, purchase timeline, preferred next step, contact details, landing URL and UTM campaign attribution. Form submissions currently go to Formspree; WhatsApp clicks and successful form submissions emit analytics events when GA4 or Meta Pixel is configured.
+## Current enquiry flow
 
-To complete the website → CRM → follow-up loop, connect the existing Formspree form to an n8n webhook and map each submission into Odoo CRM. Recommended stages are `New enquiry`, `Contacted`, `Qualified`, `Viewing booked`, `Offer/booking`, `Won` and `Lost`. Treat `purchase_timeline=0-30-days` or `preferred_next_step=site-visit` as hot-lead signals and notify the assigned salesperson immediately.
+- Step 1: home of interest, name and phone (required).
+- Step 2: purpose, timeline, preferred next step, email and message (optional).
+- Unit-card links preselect the matching home; back navigation preserves entries.
+- Nothing is sent until the final submit. Formspree remains the delivery service.
+- Validation, pending, accepted, failure and timeout states are implemented. Repeated clicks are blocked while a request is pending and after it is accepted. A timeout is an unknown delivery outcome, not a guaranteed failure; the UI advises checking with sales before retrying.
+- UTM source/medium/campaign/content are included with the submission. The source URL excludes query strings and fragments. Attribution is restored for a new enquiry.
+- Optional analytics hooks never receive contact details and cannot turn an accepted enquiry into a reported failure. Actual analytics IDs remain unconfigured.
+- JavaScript-off fallback shows both form sections and all unit layouts; a valid submission navigates to Formspree.
 
-Campaign links should use UTMs, for example:
+## Design and accessibility
 
-`https://www.prestigiousresidence.co.ke/?utm_source=facebook&utm_medium=paid-social&utm_campaign=studio-investors&utm_content=video-a`
+The existing navy/gold/cream identity and static architecture are preserved. Refinements live in `assets/refinements.css` and `assets/site.js`.
 
-Before paid campaigns, configure the real GA4 measurement ID and Meta Pixel ID in `index.html`, verify the Formspree recipient, connect the Formspree → n8n → Odoo workflow, and submit `https://www.prestigiousresidence.co.ke/sitemap.xml` to Google Search Console and Bing Webmaster Tools.
+Category controls wrap without scrollbars and support Arrow keys, Home and End. The mobile menu is a native modal dialog with focus containment and Escape dismissal; closed links are not exposed. FAQ answers use real hidden states. Content is visible without waiting for scroll animations, and reduced-motion preferences are respected. All form controls have explicit labels and error associations.
 
-## 🚀 Deploy to Vercel (3 steps)
+## Content integrity / owner actions
 
-1. **Create a GitHub repo** and push this folder
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial website"
-   git remote add origin https://github.com/YOUR_USERNAME/prestigious-residence.git
-   git push -u origin main
-   ```
+- Prices, sizes and payment terms originate from the existing listing; they are **not independently verified current availability**.
+- The advertised October 2026 date is clearly labelled a target requiring confirmation.
+- Exterior imagery and floor plans are labelled architectural illustrations, not dated site progress.
+- Studio variants are identified by size and price because the embedded brochure labels conflict with the prior Type B/Type C web labels.
+- Unsupported capital-gain projections were replaced with a payment comparison: (listed price − 20% deposit) ÷ 24, rounded. Booking fees and other charges are explicitly excluded from these illustrations.
+- No developer identity, approvals, completed-project evidence, testimonials, occupancy figures or dated construction photos have been invented.
+- Obtain the developer's legal identity, approved project documents, current dated photos, current unit availability and written full payment terms to add real proof next.
+- No identity-document uploads or payments are collected through this form.
 
-2. **Go to vercel.com** → New Project → Import from GitHub → Select repo → Deploy
+## Local verification (no dependencies)
 
-3. **Custom domain** (optional): In Vercel dashboard → Settings → Domains → Add `prestigiousresidence.co.ke`
-
----
-
-## ✅ Pre-Launch Checklist
-
-- [ ] Replace phone number `+254 700 000 000` in index.html (2 places)
-- [ ] Replace email `info@prestigiousresidence.co.ke`
-- [ ] Update WhatsApp link with real number
-- [ ] Confirm Google Maps embed shows correct pin
-- [ ] Test contact form (connect to Formspree or Netlify Forms if needed)
-
----
-
-## 📱 Marketing Strategy
-
-### WhatsApp (Highest ROI for Kenyan market)
-- Create a **WhatsApp Business** account for Prestigious Residence
-- Set up automated greeting message with pricing summary
-- Broadcast list: send unit updates to warm leads
-- Share individual unit images with caption + price (ready-made from your brochure)
-
-### Facebook & Instagram
-- **Post daily** during sales push:
-  - Day 1: Hero exterior render + "Now Selling" announcement
-  - Day 2: Studio floorplan + "Own from KES 1.75M"
-  - Day 3: Location video (Garden City visible) + "5 minutes from everywhere"
-  - Day 4: Payment plan breakdown graphic
-  - Day 5: Construction update photo (15th floor)
-  - Repeat with different units
-- **Run Facebook Lead Ads** targeting:
-  - Nairobi, age 28–55
-  - Interests: Real estate, investment, home ownership, KCB, Equity Bank
-  - Budget: KES 500–1,000/day
-  - Lead form collects: Name, Phone, Unit of interest
-
-### Google
-- Register on **Google Business Profile** (free): "Prestigious Residence" with the Safari Park address
-- This shows your project when people search "apartments Safari Park" or "apartments near Garden City"
-
-### LinkedIn
-- Post for diaspora investors and corporate buyers
-- "Prime Nairobi apartments — investment with 20% projected capital gains"
-
----
-
-## 📊 Lead Management
-Connect your contact form to a free service:
-- **Formspree** (formspree.io) — replace form action with your Formspree endpoint
-- **Google Sheets** via Make.com or Zapier — auto-log every enquiry
-- Follow up every lead within 2 hours via WhatsApp
-
----
-
-## 🔧 Form Setup (Formspree)
-Replace the form tag in index.html:
-```html
-<form class="contact-form" action="https://formspree.io/f/YOUR_ID" method="POST">
+```bash
+node --test tests/source.test.mjs
+node scripts/preview-server.mjs 4174
 ```
-Remove the `onsubmit="handleSubmit(event)"` attribute and the JS function.
+
+Open `http://localhost:4174/__qa` to inspect the actual page at 320, 390, 768, 1024 and 1440px iframe viewports. The display can scale to fit the browser; the page's internal CSS viewport remains the selected size.
+
+The local preview **replaces the form action with a local simulated endpoint**, with success/error/timeout modes. It never forwards submissions or saves contact data. Test files are excluded from Vercel uploads via `.vercelignore`. Never use the public contact form for automated fixture sends.
+
+## Deployment
+
+Keep the existing Vercel project and custom domain. A feature branch gets a preview; merge reviewed changes to `main` for production. Do not migrate hosting or introduce a framework for these refinements.
+
+Production: https://www.prestigiousresidence.co.ke/
+
+## Integrations still to configure
+
+Formspree inbox delivery, GA4/Meta IDs, consent handling for any future advertising trackers, and Formspree → n8n → Odoo remain separate integration work. The website does not claim CRM acceptance, sales-team notification, an automatic brochure delivery or a confirmed appointment merely because Formspree accepted a submission.
+
+Suggested Odoo stages: New enquiry → Contacted → Qualified → Viewing booked → Offer/booking → Won/Lost. Use stated buyer timing and viewing interest as signals to review, not proof of purchase readiness.
