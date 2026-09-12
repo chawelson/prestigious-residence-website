@@ -1,5 +1,17 @@
 # Prestigious Residence — Website & Marketing Guide
 
+## Sales-system readiness
+
+The website now captures the details needed to qualify a property enquiry: unit interest, buying purpose, purchase timeline, preferred next step, contact details, landing URL and UTM campaign attribution. Form submissions currently go to Formspree; WhatsApp clicks and successful form submissions emit analytics events when GA4 or Meta Pixel is configured.
+
+To complete the website → CRM → follow-up loop, connect the existing Formspree form to an n8n webhook and map each submission into Odoo CRM. Recommended stages are `New enquiry`, `Contacted`, `Qualified`, `Viewing booked`, `Offer/booking`, `Won` and `Lost`. Treat `purchase_timeline=0-30-days` or `preferred_next_step=site-visit` as hot-lead signals and notify the assigned salesperson immediately.
+
+Campaign links should use UTMs, for example:
+
+`https://www.prestigiousresidence.co.ke/?utm_source=facebook&utm_medium=paid-social&utm_campaign=studio-investors&utm_content=video-a`
+
+Before paid campaigns, configure the real GA4 measurement ID and Meta Pixel ID in `index.html`, verify the Formspree recipient, connect the Formspree → n8n → Odoo workflow, and submit `https://www.prestigiousresidence.co.ke/sitemap.xml` to Google Search Console and Bing Webmaster Tools.
+
 ## 🚀 Deploy to Vercel (3 steps)
 
 1. **Create a GitHub repo** and push this folder
@@ -73,4 +85,3 @@ Replace the form tag in index.html:
 <form class="contact-form" action="https://formspree.io/f/YOUR_ID" method="POST">
 ```
 Remove the `onsubmit="handleSubmit(event)"` attribute and the JS function.
-
